@@ -1,3 +1,5 @@
 module.exports = {
-  header: 'header'
+  header: 'header',
+  section: 'section',
+  example: 'example'
 }

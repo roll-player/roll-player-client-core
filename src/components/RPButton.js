@@ -1,6 +1,6 @@
 import React from 'react'
 import CSSModules from 'react-css-modules'
-import styles from './styles/button.css'
+import styles from './styles/RPButton.css'
 
 class RPButton extends React.Component {
   constructor (props) {

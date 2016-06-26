@@ -1,0 +1,7 @@
+module.exports = {
+  container: 'container',
+  icon: 'icon',
+  small: 'small',
+  medium: 'medium',
+  large: 'large'
+}

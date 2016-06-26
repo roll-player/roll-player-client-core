@@ -1,0 +1,7 @@
+module.exports = {
+  container: 'container',
+  horizontal: 'horizontal',
+  horizontalMargin: 'horizontalMargin',
+  vertical: 'vertical',
+  verticalMargin: 'verticalMargin'
+}

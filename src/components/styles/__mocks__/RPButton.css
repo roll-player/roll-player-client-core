@@ -1,0 +1,11 @@
+module.exports = {
+  button: 'button',
+  small: 'small',
+  medium: 'medium',
+  large: 'large',
+  hovered: 'hovered',
+  smallHovered: 'smallHovered',
+  mediumHovered: 'mediumHovered',
+  largeHovered: 'largeHovered',
+  wrapper: 'wrapper'
+}

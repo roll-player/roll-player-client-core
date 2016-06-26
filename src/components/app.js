@@ -1,7 +1,7 @@
 import React from 'react'
 import CSSModules from 'react-css-modules'
 import styles from './styles/app.css'
-import RPButton from './button'
+import RPButton from './RPButton'
 import RPButtonGroup from './RPButtonGroup'
 import InlineIcon from './inlineIcon'
 

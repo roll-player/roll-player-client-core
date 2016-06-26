@@ -1,6 +1,6 @@
 import React from 'react'
 import CSSModules from 'react-css-modules'
-import styles from './styles/buttonGroup.css'
+import styles from './styles/RPButtonGroup.css'
 
 class RPButtonGroup extends React.Component {
   render () {
