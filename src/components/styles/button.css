@@ -1,0 +1,47 @@
+.button {
+  padding: 5px 10px 5px 10px;
+  border: 1px solid #ccc;
+  color: green;
+  background-color: white;
+  display: flex;
+}
+
+.small {
+  composes: button;
+  font-size: .5em;
+}
+
+.medium {
+  composes: button;
+  font-size: 1em;
+}
+
+.large {
+  composes: button;
+  font-size: 2em;
+}
+
+.hovered {
+  background-color: green;
+  color: white;
+}
+
+.smallHovered {
+  composes: small;
+  composes: hovered;
+}
+
+.mediumHovered {
+  composes: medium;
+  composes: hovered;
+}
+
+.largeHovered {
+  composes: large;
+  composes: hovered;
+}
+
+.wrapper {
+  display: flex;
+  justify-items: center;
+}

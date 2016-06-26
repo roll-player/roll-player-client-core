@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+}
+
+.horizontal {
+  composes: container;
+  flex-direction: row;
+}
+
+.horizontalMargin {
+  margin-right: 5px;
+}
+
+.vertical {
+  composes: container;
+  flex-direction: column;
+}
+
+.verticalMargin {
+  margin-bottom: 5px;
+}

@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  padding-right: 5px;
+}
+
+.small {
+  composes: icon;
+  height: 20px;
+}
+
+.medium {
+  composes: icon;
+  height: 40px;
+}
+
+.large {
+  composes: icon;
+  height: 20px;
+}
