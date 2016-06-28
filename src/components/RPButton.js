@@ -33,7 +33,7 @@ class RPButton extends React.Component {
     })
 
     return (
-      <div className={props.styles.wrapped}>
+      <div className={props.styles.wrapper}>
         {passed}
       </div>
     )

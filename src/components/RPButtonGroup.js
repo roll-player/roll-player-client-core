@@ -21,7 +21,7 @@ class RPButtonGroup extends React.Component {
 }
 
 RPButtonGroup.propTypes = {
-  direction: React.PropTypes.oneOfType(['horizontal', 'vertical'])
+  direction: React.PropTypes.oneOf(['horizontal', 'vertical'])
 }
 
 RPButtonGroup.defaultProps = {

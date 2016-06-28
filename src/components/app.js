@@ -3,7 +3,7 @@ import CSSModules from 'react-css-modules'
 import styles from './styles/app.css'
 import RPButton from './RPButton'
 import RPButtonGroup from './RPButtonGroup'
-import InlineIcon from './inlineIcon'
+import RPInlineIcon from './RPInlineIcon'
 
 class App extends React.Component {
   render () {
@@ -12,9 +12,9 @@ class App extends React.Component {
     }
 
     let nestedContent = (
-      <InlineIcon icon={(<img src='https://placecage.com/40/40' />)}>
-        <span>Hello</span>
-      </InlineIcon>
+      <RPInlineIcon icon={(<img src='https://placehold.it/40/40' />)}>
+        <span>Roll</span>
+      </RPInlineIcon>
     )
 
     let NestedHoveredContent = ({ hovered }) => {

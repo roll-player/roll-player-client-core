@@ -1,9 +1,9 @@
 import React from 'react'
 
 import CSSModules from 'react-css-modules'
-import styles from './styles/inlineIcon.css'
+import styles from './styles/RPInlineIcon.css'
 
-class InlineIcon extends React.Component {
+class RPInlineIcon extends React.Component {
   render () {
     let { children, icon, iconSize } = this.props
 
@@ -18,14 +18,17 @@ class InlineIcon extends React.Component {
   }
 }
 
-InlineIcon.propTypes = {
+RPInlineIcon.propTypes = {
   icon: React.PropTypes.element.isRequired,
   iconSize: React.PropTypes.oneOf(['small', 'medium', 'large']),
-  children: React.PropTypes.element.isRequired
+  children: React.PropTypes.oneOfType([
+    React.PropTypes.element,
+    React.PropTypes.string
+  ]).isRequired
 }
 
-InlineIcon.defaultProps = {
+RPInlineIcon.defaultProps = {
   iconSize: 'medium'
 }
 
-export default CSSModules(InlineIcon, styles)
+export default CSSModules(RPInlineIcon, styles)
