@@ -53,8 +53,10 @@ describe('RPButton', () => {
 
     beforeEach(() => {
       clickAction = spy()
+
+      const children = React.createElement('div', null, 'hello')
       const props = {
-        children: ({hovered}) => (<div>{hovered}</div>),
+        children,
         action: clickAction
       }
 
@@ -62,18 +64,28 @@ describe('RPButton', () => {
     })
 
     it('should set hovered to true when the mouse enters', () => {
-      button.hoverStart()
+      const buttonNode = findDOMNode(button)
+      Simulate.mouseEnter(buttonNode)
+
       expect(button.state.hovered).toEqual(true)
     })
 
     it('should set hovered to false when the mouse exits', () => {
-      button.hoverEnd()
+      const buttonNode = findDOMNode(button)
+      Simulate.mouseLeave(buttonNode)
+
       expect(button.state.hovered).toEqual(false)
     })
 
+    // this test is currently invalid
     it('should pass the hovered state to its children', () => {
-      button.hoverStart()
+      const buttonNode = findDOMNode(button)
+      Simulate.mouseEnter(buttonNode)
+
       expect(button.state.hovered).toEqual(true)
+
+      // I feel like I should be able to do something like
+      // get rendered child, check it hovered prop
     })
 
     it('should call the onClick action', () => {
