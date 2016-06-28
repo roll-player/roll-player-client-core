@@ -29,7 +29,8 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "jest-cli": "^13.0.0",
     "react-addons-test-utils": "^15.1.0",
-    "reactpack": "^0.7.2"
+    "reactpack": "^0.7.2",
+    "sinon": "^1.17.4"
   },
   "dependencies": {
     "react": "^15.1.0",
@@ -40,10 +41,18 @@
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/react",
       "<rootDir>/node_modules/react-dom",
-      "<rootDir>/node_modules/react-addons-test-utils"
+      "<rootDir>/node_modules/react-addons-test-utils",
+      "<rootDir>/node_modules/sinon"
     ]
   },
   "standard": {
-    "globals": ["jest", "describe", "it", "expect"]
+    "globals": [
+      "jest",
+      "describe",
+      "it",
+      "expect",
+      "beforeEach",
+      "afterEach"
+    ]
   }
 }

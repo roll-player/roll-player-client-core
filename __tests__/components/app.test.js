@@ -8,6 +8,7 @@ import { renderIntoDocument } from 'react-addons-test-utils'
 import App from '../../src/components/app'
 
 const createApp = () => renderIntoDocument(<App />)
+
 describe('App', () => {
   it('renders something', () => {
     const app = createApp()
