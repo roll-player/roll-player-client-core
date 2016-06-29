@@ -26,6 +26,7 @@
     "babel-jest": "^13.0.0",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
+    "enzyme": "^2.3.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "jest-cli": "^13.0.0",
     "react-addons-test-utils": "^15.1.0",
@@ -39,10 +40,12 @@
   },
   "jest": {
     "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/enzyme",
       "<rootDir>/node_modules/react",
       "<rootDir>/node_modules/react-dom",
       "<rootDir>/node_modules/react-addons-test-utils",
-      "<rootDir>/node_modules/sinon"
+      "<rootDir>/node_modules/sinon",
+      "<rootDir>/node_modules/react-css-modules"
     ]
   },
   "standard": {

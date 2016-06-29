@@ -3,96 +3,130 @@ jest.unmock('../../src/components/RPButton')
 
 import React from 'react'
 import { spy } from 'sinon'
-import { findDOMNode } from 'react-dom'
-import {
-  renderIntoDocument,
-  Simulate
-} from 'react-addons-test-utils'
-
+import { shallow } from 'enzyme'
 import RPButton from '../../src/components/RPButton'
 
-const createRPButton = props => renderIntoDocument(<RPButton {...props} />)
+const createRPButton = props => shallow(<RPButton {...props} />)
+
+const getChildFromWrapper = node => node.children('.wrapper').children()
 
 describe('RPButton', () => {
   it('should have an initial state', () => {
     const props = {
       children: 'Hello',
-      action: () => {}
+      action: spy()
     }
     const button = createRPButton(props)
-
-    expect(button.state.hovered).toEqual(false)
+    expect(button.state('hovered')).toEqual(false)
   })
 
   it('should properly render a string as its child', () => {
     const props = {
       children: 'Hello',
-      action: () => {}
+      action: spy()
     }
 
     const button = createRPButton(props)
-    const buttonNode = findDOMNode(button)
-
-    expect(buttonNode.textContent).toEqual(props.children)
+    expect(button.contains(props.children)).toEqual(true)
   })
 
   it('should properly render an element as its child', () => {
-    const children = React.createElement('div', null, 'hello')
+    const children = (<div className='child' />)
 
     const props = {
       children,
-      action: () => {}
+      action: spy()
     }
 
     const button = createRPButton(props)
-    expect(button.props.children).toEqual(<div>hello</div>)
+    const grandChild = getChildFromWrapper(button)
+
+    // since we wrap the child in a container to handle positioning
+    // we should look at known properties on the child, since it
+    // won't be exactly identical to the child we render in
+    expect(grandChild.props().className).toEqual('child')
+  })
+
+  it('it should set the disabled state', () => {
+    const button = createRPButton({
+      children: 'Hello',
+      action: spy(),
+      disabled: true
+    })
+
+    expect(button.props().disabled).toEqual(true)
+  })
+
+  describe('styling', () => {
+    it('should set the correct size state', () => {
+      const button = createRPButton({
+        children: 'Hello',
+        action: spy(),
+        size: 'small'
+      })
+
+      expect(button.props().className).toEqual('small')
+    })
   })
 
   describe('hovered', () => {
-    let button, clickAction
+    let button, action
 
     beforeEach(() => {
-      clickAction = spy()
-
-      const children = React.createElement('div', null, 'hello')
+      action = spy()
+      const children = (<div className='child'>Hello</div>)
       const props = {
         children,
-        action: clickAction
+        action
       }
 
       button = createRPButton(props)
     })
 
     it('should set hovered to true when the mouse enters', () => {
-      const buttonNode = findDOMNode(button)
-      Simulate.mouseEnter(buttonNode)
-
-      expect(button.state.hovered).toEqual(true)
+      button.simulate('mouseEnter')
+      expect(button.state('hovered')).toEqual(true)
     })
 
     it('should set hovered to false when the mouse exits', () => {
-      const buttonNode = findDOMNode(button)
-      Simulate.mouseLeave(buttonNode)
-
-      expect(button.state.hovered).toEqual(false)
+      button.simulate('mouseLeave')
+      expect(button.state('hovered')).toEqual(false)
     })
 
-    // this test is currently invalid
     it('should pass the hovered state to its children', () => {
-      const buttonNode = findDOMNode(button)
-      Simulate.mouseEnter(buttonNode)
+      button.simulate('mouseEnter')
+      expect(getChildFromWrapper(button).props().hovered).toEqual(true)
 
-      expect(button.state.hovered).toEqual(true)
-
-      // I feel like I should be able to do something like
-      // get rendered child, check it hovered prop
+      button.simulate('mouseLeave')
+      expect(getChildFromWrapper(button).props().hovered).toEqual(false)
     })
 
     it('should call the onClick action', () => {
-      const buttonNode = findDOMNode(button)
-      Simulate.click(buttonNode)
+      button.simulate('click')
+      expect(action.called).toEqual(true)
+    })
 
-      expect(clickAction.called).toEqual(true)
+    it('should append Hovered style', () => {
+      const button = createRPButton({
+        children: 'Hello',
+        action: spy(),
+        size: 'small'
+      })
+
+      button.simulate('mouseEnter')
+      expect(button.props().className).toEqual('smallHovered')
+    })
+
+    it('should remove the Hovered append', () => {
+      const button = createRPButton({
+        children: 'Hello',
+        action: spy(),
+        size: 'small'
+      })
+
+      button.simulate('mouseEnter')
+      button.simulate('mouseLeave')
+      expect(button.props().className).toEqual('small')
     })
   })
 })
