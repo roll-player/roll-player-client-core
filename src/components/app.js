@@ -12,8 +12,8 @@ class App extends React.Component {
     }
 
     let nestedContent = (
-      <InlineIcon icon={(<img src='https://placecage.com/40/40' />)}>
-        <span>Hello</span>
+      <InlineIcon icon={(<img src='https://placehold.it/40/40' />)}>
+        <span>Roll</span>
       </InlineIcon>
     )
 
